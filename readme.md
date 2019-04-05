@@ -1,4 +1,16 @@
-**Nota importante:**
+Ejemplo de select joins entre diferentes tablas con JPA. 
+
+Se verán diferentes tipos de unión explicando como realizar uniones entre tablas de modo perezoso (**lazy**) o agresivo  (**eager**). Se unirán tablas por un solo campo, por varios e incluso por uno pero añadiendo una condición estática.
+
+EL proyecto de ejemplo esta en: https://github.com/chuchip/jpajoins y esta desarrollado en **Spring Boot** con **Hibernate**, usando como base de datos H2.
+
+Las tablas están definidas en el fichero `schema.sql` y se cargan datos para pruebas en el fichero `data.sql`
+
+Este es el esquema de la base de datos:
+
+![jpajoins_schema](.\jpajoins_schema.png)
+
+Nota importante:**
 
 > Si el nombre de la entidad o de la columna en las clases **Java**  tiene una mayúscula en medio, JPA interpretara que su hay un guion en medio y ese será la tabla o columna que buscara en la base de datos.
 > De esta manera si a la clase `Invoiceheader.java` le renombráramos a `InvoiceHeader.java`  *Hibernate*, buscaría la tabla **invoice_header** en la base de datos y fallaría pues no la encontraría.
