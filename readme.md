@@ -1,4 +1,6 @@
-Ejemplo de select joins entre diferentes tablas con JPA. 
+###Ejemplo de select joins entre diferentes tablas con JPA.
+
+La documentación actualizada de este proyecto esta en: [http://www.profesor-p.com/2019/04/05/optimizando-consultas-con-hibernate/](http://www.profesor-p.com/2019/04/05/optimizando-consultas-con-hibernate/) 
 
 Se verán diferentes tipos de unión explicando como realizar uniones entre tablas de modo perezoso (**lazy**) o agresivo  (**eager**). Se unirán tablas por un solo campo, por varios e incluso por uno pero añadiendo una condición estática.
 
@@ -8,7 +10,7 @@ Las tablas están definidas en el fichero `schema.sql` y se cargan datos para pr
 
 Este es el esquema de la base de datos:
 
-![jpajoins_schema](.\jpajoins_schema.png)
+![jpajoins_schema](https://raw.githubusercontent.com/chuchip/jpajoins/master/jpajoins_schema.png)
 
 Nota importante:**
 

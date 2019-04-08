@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.JoinColumnOrFormula;
 import org.hibernate.annotations.JoinColumnsOrFormulas;
@@ -25,7 +26,7 @@ public class Invoiceheader  implements Serializable{
 	int id;
 	
 	@Column(name="fiscalyear")
-	int fiscalYear;
+	int yearFiscal;
 	@Column(name="numberinvoice")
 	int numberInvoice;
 
@@ -47,6 +48,7 @@ public class Invoiceheader  implements Serializable{
 				@JoinColumn(name="numberinvoice",referencedColumnName="numberinvoice")				
 			}			
 			)
+	@OrderBy("linea desc")
 	List<Invoicedetails> details;
 	
 	

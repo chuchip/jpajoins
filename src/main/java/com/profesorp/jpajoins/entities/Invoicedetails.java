@@ -19,12 +19,14 @@ public class Invoicedetails {
 	@Id
 	int id;
 	
-	@Column
-	int fiscalyear;
-	@Column
-	int numberinvoice;
-	@Column
-	int lineaDetails; // La 'D' esta en mayuscualas adrede para que mapee el campo linea_details
+	@Column(name="fiscalyear")	
+	int year;
+	
+	@Column(name="numberinvoice")
+	int invoice;
+	
+	@Column (name="lineaDetails")
+	int linea; // La 'D' esta en mayuscualas adrede para que mapee el campo linea_details
 	
 	@Column
 	int numberarticles;
