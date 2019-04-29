@@ -1,20 +1,20 @@
 package com.profesorp.jpajoins.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.FilterDef;
-
 import lombok.Data;
 
 @Entity
 @Data
-@FilterDef(name="onlyActive", defaultCondition="active = 1")
+
 public class Customer implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	int id;
 	

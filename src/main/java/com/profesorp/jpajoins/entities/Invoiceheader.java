@@ -12,6 +12,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.JoinColumnOrFormula;
 import org.hibernate.annotations.JoinColumnsOrFormulas;
@@ -22,9 +23,16 @@ import lombok.Data;
 @Entity
 @Data
 public class Invoiceheader  implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
+	
 	@Id
 	int id;
-	
+
+	@Column(name="active")
+	String activo;	
+
 	@Column(name="fiscalyear")
 	int yearFiscal;
 	@Column(name="numberinvoice")

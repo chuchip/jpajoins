@@ -1,28 +1,45 @@
 package com.profesorp.jpajoins.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.profesorp.jpajoins.entities.Invoiceheader;
-import com.profesorp.jpajoins.repository.invoiceHeaderRepository;
+import com.profesorp.jpajoins.dtos.DtoRequest;
+import com.profesorp.jpajoins.dtos.DtoResponse;
+import com.profesorp.jpajoins.services.ICacheData;
 
 @RestController
 public class PrincipalController {
+	
 	@Autowired
-	invoiceHeaderRepository invoiceHeaderRepository;
+	ICacheData cacheData;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Invoiceheader> get(@PathVariable int id)
+	public ResponseEntity<DtoResponse> get(@PathVariable int id)
 	{
-		 Optional<Invoiceheader> invoice=invoiceHeaderRepository.findById(id);
-		 if (invoice.isPresent())
-			 return new ResponseEntity<>(invoice.get(),HttpStatus.OK);
-		 return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+		long timeInit=System.currentTimeMillis();
+		DtoResponse response=cacheData.getDataCache(id);		
+		long timeEnd=System.currentTimeMillis();
+		response.setInterval(timeEnd-timeInit);
+		return new ResponseEntity<>(response,HttpStatus.OK);
+	}
+	
+	@PutMapping("/")
+	public ResponseEntity<DtoResponse> put(@RequestBody DtoRequest dtoRequest )
+	{		
+		cacheData.update(dtoRequest);
+		return new ResponseEntity<>(null,HttpStatus.OK);
+	}
+		
+	@GetMapping("/flushcache")
+	public String flushCache()
+	{
+		cacheData.flushCache();
+		return "Cache Flushed!";
 	}
 }
